@@ -52,9 +52,9 @@ public class ProdutoDao {
 
     }
 
-    public static void delete(ProdutoDto p){
+    public static void delete(String codigo){
 
-        staticProdutos.removeIf(p::equalsDto);
+        staticProdutos.removeIf(p->p.getCodigo().equals(codigo));
 
     }
 

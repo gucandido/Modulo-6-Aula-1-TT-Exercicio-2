@@ -2,6 +2,7 @@ package com.company.produtos.controller;
 
 import com.company.produtos.dao.ProdutoDao;
 import com.company.produtos.dto.ProdutoDto;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -58,9 +59,11 @@ public class ProdutoController {
     }
 
     @DeleteMapping("")
-    public ResponseEntity<?> delDelete(@RequestBody ProdutoDto p){
+    public ResponseEntity<?> delDelete(@RequestBody ObjectNode json){
 
-        ProdutoDao.delete(p);
+        String codigo = json.get("codigo").textValue();
+
+        ProdutoDao.delete(codigo);
 
         return new ResponseEntity<>("Produto apagado com sucesso!", HttpStatus.ACCEPTED);
 

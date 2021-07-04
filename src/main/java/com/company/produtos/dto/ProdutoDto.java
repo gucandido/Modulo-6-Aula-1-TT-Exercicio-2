@@ -56,7 +56,7 @@ public class ProdutoDto implements ProdutoEq {
     @Override
     public boolean equalsDto(Object o){
         Produto produto = (Produto) o;
-        return codigo == produto.getCodigo();
+        return codigo.equals(produto.getCodigo());
     }
 
     @Override
